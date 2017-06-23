@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--The ng-app directive defines our App-->
+<html ng-app="myShoppingList">
+  <head>
+    <!-- include title for the webpage -->
+    <title>My To Do List</title>
+    <meta charset="utf-8"> 
+    <!-- include meta tag to ensure proper scaling and zooming -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--include jQuery mobile styling and my own themes sheets-->
+    <link rel="stylesheet" href="themes/extraTheme.css" />
+    <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <!-- include my own css styling sheets -->
+    <link rel="stylesheet" type="text/css" href="css1/myStyle2.css">
+  </head>
+
+  <!--The body defines the View part. The Controller communicates with the 
+      View through the data-ng-controller directive.
+  -->
+  <body class ="container" data-ng-controller="myCtrl">
+      <!-- Main Page -->
+   <div data-role="page" id="main" data-theme ="d" data-mini="true">
+      <!-- Panel -->
+    <div class="panel left" data-role="panel" id="myCoolPanel">
+        <h3>Information</h3>
+        <p>This is My To Do List App with items generated using angularjs, and displayed in a simple HTML list. We can add and delete items from the To Do List App.</p><p>To add an item to the list, just type the item's name in the input box provided and click the "Add Item" button.</p><p>If the item is already included in the list, it will not be added, because error handling technique will report that it is already in the list and should not be included.</p><p> To delete an item, just click on the little (x) next to it.</p>
+     </div> <!--/panel-->
+      <!-- Header -->
+     <header data-role="header">
+       <h1>My To Do List<br> App</h1>
+       <a href= "#myHome" class="ui-btn ui-icon-home ui-btn-icon-left">Home Page</a>
+       <a href="#myCoolPanel" class="ui-btn ui-icon-grid ui-btn-icon-right">Information</a>
+     </header><!--/header-->
+
+     <!-- User Content -->
+     <div data-role="main" class="ui-content">
+      <h1>Hello World!</h1>
+       <p>Welcome to my Home Page. Please feel free to use My To Do List App to generate your own shopping list of groceries or items of your interest.</p>
+       <div data-role="content">
+         <div class="content-primary">
+          <div data-demo-html="true">
+           <ol>
+             <li ng-repeat="myGroceries in products">{{myGroceries}}
+             <span ng-click="removeItem($index)" style="cursor:pointer;" >x</span></li>
+           </ol>
+           <!--The controller uses 'addMe' to add items to the product-->
+           <label class="container ">
+            <input placeholder="Type item name here" ng-model="addMe" /><br>
+            <button ng-click="addItem()">Add Item</button>
+            <p>{{errortext}}</p>
+           </label>
+          </div>
+        </div>
+     </div>
+    </div>
+    <!--include Angularjs link-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <!--
+    Include JavaScript (including jQuery and JQM) at the foot of the page when targeting mobile, to give a better experience to users ...
+     -->
+    <script src="js/myjsCode.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <!-- Footer -->
+    <div data-role="footer" class="toof" data-position="fixed">
+      <h2>&copy; Ben Mansuk & sons 2017</h2>
+    </div>
+   </div> <!-- End of page-->
+</body>
+</html>
